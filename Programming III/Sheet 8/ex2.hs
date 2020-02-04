@@ -1,0 +1,1 @@
+--nqueens hs file not there, but can read algo and try impleemnt myself
