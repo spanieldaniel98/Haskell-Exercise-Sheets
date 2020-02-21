@@ -4,7 +4,7 @@
 module Ex3 where 
 }
 
-%wrapper "posn" 
+%wrapper "basic" 
 
 $digit = 0-9
 $digit1 = 1-9     
@@ -14,30 +14,32 @@ $alpha = [a-zA-Z]
 
 tokens :-
   $white+                         ; 
-  "--".*                          ; 
-  forward [$white]* $digit+       { tok (\p s -> TokenForward (read $ drop 7 s) p) }
-  checkobs [$white]* $digit1+     { tok (\p s -> TokenCheckObstacle (read $ drop 8 s) p) }
-  left                            { tok (\p s -> TokenRotateLeft p) }
-  right                           { tok (\p s -> TokenRotateRight p) }
-  if                              { tok (\p s -> TokenIf p) }
-  then                            { tok (\p s -> TokenThen p) }
-  otherwise                       { tok (\p s -> TokenOtherwise p) }
-
+  "--".*                          ;
+  $digit+                         { \s -> TokenVar (read s) }
+  $digit1+                        { \s -> TokenVar1 (read s) }
+  forward                         { \s -> TokenForward }
+  checkobs                        { \s -> TokenCheckObstacle }
+  left                            { \s -> TokenRotateLeft }
+  right                           { \s -> TokenRotateRight }
+  if                              { \s -> TokenIf }
+  then                            { \s -> TokenThen }
+  otherwise                       { \s -> TokenOtherwise }
+  end                             { \s -> TokenEnd }
 { 
 -- Each action has type :: String -> Token 
 
--- Action helper:
-tok f p s = f p s
-
 -- The token type: 
 data Token = 
-  TokenForward       Int AlexPosn |
-  TokenCheckObstacle Int AlexPosn |
-  TokenRotateLeft        AlexPosn |
-  TokenRotateRight       AlexPosn |
-  TokenIf                AlexPosn |
-  TokenThen              AlexPosn |
-  TokenOtherwise         AlexPosn
+  TokenVar  Int      |
+  TokenVar1 Int      |
+  TokenForward       |
+  TokenCheckObstacle |
+  TokenRotateLeft    |
+  TokenRotateRight   |
+  TokenIf            |
+  TokenThen          |
+  TokenOtherwise     |
+  TokenEnd
   deriving (Eq,Show) 
-
+  
 }

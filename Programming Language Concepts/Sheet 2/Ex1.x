@@ -1,5 +1,4 @@
 -- modified Tokens.x Alex file that includes an exponentiation operator
-
 { 
 module Ex1 where
 }

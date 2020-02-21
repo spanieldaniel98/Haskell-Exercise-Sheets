@@ -1,22 +1,6 @@
 -- modified Tokens.x file to use the "posn" instead of "basic" wrapper
 { 
-module Ex2 (Token(..), AlexPosn(..), alexScanTokens) where
-
--- extracts the source code position (line:column) from a given token
-tokenPosn :: Token -> AlexPosn
-tokenPosn (TokenLet p)    = p
-tokenPosn (TokenIn p)     = p
-tokenPosn (TokenInt p _)  = p
-tokenPosn (TokenVar p _)  = p
-tokenPosn (TokenEq p)     = p
-tokenPosn (TokenPlus p)   = p
-tokenPosn (TokenMinus p)  = p
-tokenPosn (TokenTimes p)  = p
-tokenPosn (TokenDiv p)    = p
-tokenPosn (TokenLParen p) = p
-tokenPosn (TokenRParen p) = p
-tokenPosn (TokenExp p)    = p
-tokenPosn _               = error "The token is not in the correct position format!"
+module Ex2 (Token(..), AlexPosn(..), tokenPosn, alexScanTokens) where
 }
 
 %wrapper "posn"
@@ -44,6 +28,22 @@ tokens :-
 
 { 
 -- Each action has type :: String -> Token
+
+-- extracts the source code position (line:column) from a given token
+tokenPosn :: Token -> AlexPosn
+tokenPosn (TokenLet p)    = p
+tokenPosn (TokenIn p)     = p
+tokenPosn (TokenInt p _)  = p
+tokenPosn (TokenVar p _)  = p
+tokenPosn (TokenEq p)     = p
+tokenPosn (TokenPlus p)   = p
+tokenPosn (TokenMinus p)  = p
+tokenPosn (TokenTimes p)  = p
+tokenPosn (TokenDiv p)    = p
+tokenPosn (TokenLParen p) = p
+tokenPosn (TokenRParen p) = p
+tokenPosn (TokenExp p)    = p
+tokenPosn _               = error "The token is not in the correct position format!"
 
 -- Action helper:
 tok f p s = f p s
