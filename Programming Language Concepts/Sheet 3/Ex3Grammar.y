@@ -3,7 +3,7 @@
 {
 module Ex3Grammar where
 
-import Ex3 (Token(..), alexScanTokens)
+import Ex3Tokens (Token(..), alexScanTokens)
 
 }
 

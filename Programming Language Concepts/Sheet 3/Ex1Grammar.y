@@ -2,7 +2,7 @@
 {
 module Ex1Grammar where
 
-import Ex1 (Token(..), alexScanTokens)
+import Ex1Tokens (Token(..), alexScanTokens)
 
 }
 

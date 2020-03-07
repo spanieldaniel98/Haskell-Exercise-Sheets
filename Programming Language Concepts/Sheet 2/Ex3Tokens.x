@@ -1,7 +1,7 @@
 -- Alex file to generate a lexer for a domain-specific language called the Maze Direction Language (MDL), that 
 -- describes a sequence of instructions for moving a MazeBot around in a maze (that potentially includes obstructions)
 { 
-module Ex3 where 
+module Ex3Tokens where 
 }
 
 %wrapper "basic" 

@@ -1,6 +1,6 @@
 -- modified Tokens.x file to use the "posn" instead of "basic" wrapper
 { 
-module Ex2 (Token(..), AlexPosn(..), tokenPosn, alexScanTokens) where
+module Ex2Tokens (Token(..), AlexPosn(..), tokenPosn, alexScanTokens) where
 }
 
 %wrapper "posn"
