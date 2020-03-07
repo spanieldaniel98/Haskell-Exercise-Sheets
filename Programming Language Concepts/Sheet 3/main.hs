@@ -1,5 +1,5 @@
 import Ex1Grammar
-import Ex1
+import Ex1Tokens
 
 import System.Environment (getArgs)
 
